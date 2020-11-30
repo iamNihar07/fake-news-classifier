@@ -17,7 +17,10 @@ x,y = dataset.shape
 # print()
 # get the labels of REAL/FAKE from the dataset
 label = dataset.label
+# get the text contents of news articles
 text = dataset.text
+
+
 # #Preview the first five labels of the dataset
 # print(label.head())
 
@@ -60,13 +63,13 @@ score = round(score*100, 2)
 print()
 print("Model Classifier Accuracy: %0.2f%%" %(score))
 
-# Compute confusion matrix to evaluate the accuracy of a classification
+# Compute confusion matrix to evaluate the accuracy of classification
 confMatrix = confusion_matrix(TestY,PredY, labels=['FAKE','REAL'])
 print("DATASET INSIGHTS - For the dataset of total %d news articles: " %(x))
 print("After training the model using %d news articles, " %(0.8*x))
 print("Out of %d tested news articles, we have: " %(0.2*x))
-print("Number of articles which are FAKE, and correctly classified as FAKE  : %d" %(confMatrix[0][0]))
-print("Number of articles which are FAKE, and incorrectly classified as REAL: %d" %(confMatrix[0][1]))
-print("Number of articles which are REAL, and incorrectly classified as FAKE: %d" %(confMatrix[1][0]))
-print("Number of articles which are REAL, and correctly classified as REAL  : %d" %(confMatrix[1][1]))
+print("Number of articles which are FAKE, and correctly classified as FAKE  : %d (%.2f%% True Positives)" %(confMatrix[0][0], confMatrix[0][0]*100.0/(0.2*x)))
+print("Number of articles which are FAKE, and incorrectly classified as REAL: %d  (%.2f%% False Negatives)" %(confMatrix[0][1], confMatrix[0][1]*100.0/(0.2*x)))
+print("Number of articles which are REAL, and incorrectly classified as FAKE: %d  (%.2f%% False Positives)" %(confMatrix[1][0], confMatrix[1][0]*100.0/(0.2*x)))
+print("Number of articles which are REAL, and correctly classified as REAL  : %d (%.2f%% True Negatives)" %(confMatrix[1][1], confMatrix[1][1]*100.0/(0.2*x)))
 print()
