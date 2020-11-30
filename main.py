@@ -17,13 +17,14 @@ x,y = dataset.shape
 # print()
 # get the labels of REAL/FAKE from the dataset
 label = dataset.label
+text = dataset.text
 # #Preview the first five labels of the dataset
 # print(label.head())
 
 # Split the dataset into training and testing sets
 # Splitting the dataset into 20% testing and 80% training
 # Splitting is always done with the same random int 42, so output is reproducible across multiple function calls
-TrainX, TestX, TrainY, TestY = train_test_split(dataset['text'], label, test_size=0.2, train_size=0.8, random_state=42)
+TrainX, TestX, TrainY, TestY = train_test_split(text, label, test_size=0.2, train_size=0.8, random_state=42)
 
 # print(TrainX)
 # print()
